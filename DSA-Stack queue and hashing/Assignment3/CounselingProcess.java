@@ -37,6 +37,7 @@ public class CounselingProcess {
             Program program = programs.get(preference);
             if(program != null && program.hasCapacity()){
                 program.enrollStudent(student);
+                program.setCapacity(program.getCapacityOfProgram() - 1);
                 student.setAllocatedProgram(preference);
                 break;
             }
@@ -49,25 +50,18 @@ public class CounselingProcess {
         while(!studentQueue.isEmpty()){
             Student student = studentQueue.remove();
             allocateProgram(student);
+
         }
     }
     /**
      * prints the allocation for each student and the program which are allocated to them
      */
     public void printAllocations(){
-        System.out.println("Student Allocations");
+        
         for(Program program : programs.values()){
-            System.out.println("Program : " + program.getProgramName());
+            System.out.print("Program : " + program.getProgramName());
             for(Student student : program.getEnrolledStudent()){
-                System.out.println(student.getStudentName());
-            }
-        }
-        System.out.println("Students without allocations");
-        for(Program program : programs.values()){
-            for(Student student : program.getEnrolledStudent()){
-                if(student.getAllocatedProgram() == null){
-                    System.out.println(student.getStudentName());
-                }
+                System.out.println("\t" + student.getStudentName());
             }
         }
     }
