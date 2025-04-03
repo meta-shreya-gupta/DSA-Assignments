@@ -42,6 +42,9 @@ public class Program {
             enrolledStudents.add(student);
         }
     }
+    public void setCapacity(int capacity){
+        this.capacity = capacity; 
+    }
     /**
      * extracts the list of student enrolled in that program
      * @return list of enrolled students
