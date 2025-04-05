@@ -41,6 +41,9 @@ public class Main {
                     test.exit();
                     sc.close();
                     break;
+                case "tree" :
+                    test.tree(test.getCurrent());
+                    break;
                 default : 
                     System.out.println("Enter valid command");
             }
