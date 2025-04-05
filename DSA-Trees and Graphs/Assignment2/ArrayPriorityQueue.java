@@ -9,6 +9,10 @@ public class ArrayPriorityQueue implements MyPriorityQueue{
         this.tasks = new Task[capacity];
         this.count = 0;
     }
+    /**
+     * extracts the array of the tasks
+     * @return tasks array
+     */
     public Task[] getArray(){
         return tasks;
     }
@@ -29,6 +33,7 @@ public class ArrayPriorityQueue implements MyPriorityQueue{
         tasks[index + 1] = task;
         count ++;
     }
+    @Override
     public Task dequeue() throws QueueException{
         if(isEmpty()){
             throw new QueueException("Queue is empty");
@@ -37,6 +42,7 @@ public class ArrayPriorityQueue implements MyPriorityQueue{
         count -- ;
         return task;
     }
+    @Override
     public Task peek() throws QueueException{
         if(isEmpty()){
             throw new QueueException("Dosen't have peek as queue is empty");
@@ -44,6 +50,7 @@ public class ArrayPriorityQueue implements MyPriorityQueue{
         Task task = tasks[0];
         return task;
     }
+    @Override
     public Task poll() throws QueueException{
         if(isEmpty()){
             throw new QueueException("Queue is empty");
@@ -55,6 +62,7 @@ public class ArrayPriorityQueue implements MyPriorityQueue{
         count --;
         return task;
     }
+    @Override
     public boolean remove(String data){
         for(int index = 0 ; index < count ; index ++){
             if(tasks[index].getData().equals(data)){
@@ -69,16 +77,22 @@ public class ArrayPriorityQueue implements MyPriorityQueue{
         
         return false;
     }
+    @Override
     public boolean isEmpty(){
         return count == 0;
     }
+    @Override
     public boolean isFull(){
         return count == capacity;
     }
+    @Override
     public int size(){
         return count;
     }
-    public void printQueue() throws QueueException{
+    /**
+     * helper function to print the queue elements along with its priority
+     */
+    public void printQueue() {
         System.out.println("Queue");
         for(int index = 0 ; index < count ; index ++){
             System.out.println(tasks[index].getData() + " " + tasks[index].getPriority());
