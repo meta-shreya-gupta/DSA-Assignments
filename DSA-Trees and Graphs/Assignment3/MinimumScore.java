@@ -16,10 +16,18 @@ public class MinimumScore {
         minimumScore = new ArrayList<>();
         this.viratBalls = viratBalls;
     }
+    /**
+     * gets the queue of the bowlers
+     * @return queue of bowlers
+     */
     public ArrayPriorityQueue getQueue(){
         return queue;
     }
-    public boolean check(){
+    /**
+     * checks if balls available with baller is sufficient for virat to play
+     * @return true if there are ballers else false
+     */
+    public boolean validBallsLeft(){
         int sumOfBallesAvailable = 0;
         for(Task bowler : queue.getArray()){
             sumOfBallesAvailable += bowler.getPriority();
@@ -29,8 +37,12 @@ public class MinimumScore {
         }
         return true;        
     }
+    /**
+     * it finds the turns with which the ballers bowl
+     * @throws QueueException if the queue gets empty and there are balls left for virat to play
+     */
     public void getList() throws QueueException{
-        if(check()){
+        if(validBallsLeft()){
             while(viratBalls > 0){
                 Task bowler = queue.dequeue();
                 String nameOfBowler = bowler.getData();
@@ -43,6 +55,9 @@ public class MinimumScore {
             System.out.println("Insufficiant balls available for virat to play");
         }
     }
+    /**
+     * it prints the order in which the ballers bowl
+     */
     public void printOrder(){
         for(String name : minimumScore){
             System.out.println(name + "  ");
