@@ -6,5 +6,5 @@ public interface UndirectedWeightedGraph {
     boolean isConnected();
     int[] reachable(int a);
     Edge[] minimumSpanningTree();
-    int shortestPath(int a , int b);
+    void shortestPath(int a , int b);
 }

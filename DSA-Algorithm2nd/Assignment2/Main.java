@@ -35,6 +35,11 @@ public class Main {
                 System.out.println(mst[index].source + " " + mst[index] .destination + " " + mst[index].weight);
             }
         }
+        System.out.println("Enter source node (0 - " + (vertices - 1) + ")");
+        int src = sc.nextInt();
+        System.out.println("Enter destination node (0 - " + (vertices - 1) + ")");
+        int dest = sc.nextInt();
+        graph.shortestPath(src, dest);
         sc.close();
     }
 }

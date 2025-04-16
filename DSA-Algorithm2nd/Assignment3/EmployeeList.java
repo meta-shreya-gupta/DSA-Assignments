@@ -31,9 +31,17 @@ public class EmployeeList {
             temp = temp.next;
         }
     }
+    /**
+     * method that returns the sorted list head
+     */
     public void sortList(){
         head = quickSort(head);
     }
+    /**
+     * helper method to perform quick sort
+     * @param head start node of the linked list
+     * @return head of the sorted linked list
+     */
     public Node quickSort(Node head) {
 
         if (head == null || head.next == null) {
@@ -57,7 +65,10 @@ public class EmployeeList {
         return Sortedleft;
 
     }
-
+    /**
+     * sets the pivot to its sorted position
+     * @param pivot element which is to be placed to its sorted position
+     */
     private void partition(Node pivot) {
         Node temp = pivot.next;
         pivot.next = null;
@@ -73,6 +84,12 @@ public class EmployeeList {
             temp = nxt;
         }
     }
+    /**
+     * compares salary of two employees (if same then compares age)
+     * @param emp1 features of employee first
+     * @param emp2 features of employee second
+     * @return true if first has to come before then second
+     */
     public boolean comparison(Employee emp1 , Employee emp2){
         if(emp1.getSalary() > emp2.getSalary()){
             return true;
